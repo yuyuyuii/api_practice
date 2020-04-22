@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("/top", "PostsController@index");
+
+Route::resource("posts", "PostsController");
