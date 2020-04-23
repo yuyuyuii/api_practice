@@ -8,7 +8,7 @@
 @section('content')
   <a href="posts/create">新規作成</a>
   @foreach($posts as $post)
-    @if($post->user_id === Auth::user()->id)
+    <!-- @if($post->user_id === Auth::user()->id) -->
     <p>{{ $post->title}}</p>
     <p>{{ $post->content}}</p>
     <a href="/posts/{{$post->id}}">詳細</a>
@@ -19,6 +19,6 @@
       <input type="hidden" name="_method" value="delete">
     </form>
     <hr>
-    @endif
+    <!-- @endif -->
   @endforeach
 @endsection

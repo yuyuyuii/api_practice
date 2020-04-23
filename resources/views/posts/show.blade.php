@@ -27,7 +27,7 @@
     <div>
       <p>{{$comment->comment}}</p>
       @if(Auth::user()->id === $comment->user_id)
-      <a href="/comments/{{$comment->id}}">修正</a>
+      <a href="/comments/{{$comment->id}}/edit">修正</a>
       <form action="/comments/{{$comment->id}}" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="delete">

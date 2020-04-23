@@ -19,7 +19,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-      $posts = Post::has("user")->get();
+      // $posts = Post::has("user")->get();
+      $posts = Post::all();
       return view('posts.index', ['posts' => $posts]);
     }
 

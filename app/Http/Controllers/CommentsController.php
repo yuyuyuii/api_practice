@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comment;
 use App\User;
+
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }  
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +67,8 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $comment = Comment::find($id);
+      return view('comments.edit', compact('comment'));
     }
 
     /**
@@ -74,7 +80,10 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $comment = Comment::find($id);
+      $comment->comment = $request->comment;
+      $comment->save();
+      return redirect("/posts");
     }
 
     /**
