@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get("/top", "PostsController@index");
 
 Route::resource("posts", "PostsController");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
