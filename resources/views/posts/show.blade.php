@@ -13,8 +13,14 @@
     <input type="hidden" name="_method" value="delete">
   </form>
 
+
   <form action="/comments" method="post">
     {{ csrf_field()}}
+    @if($errors->has('comment'))
+      <div>
+        <p class="error" style="color:red;">{{ $errors->first('comment')}}</p>
+      </div>
+    @endif
     <label for="comment">コメント</label>
     <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
     <input type="hidden" name="post_id" value="{{$post->id}}">

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\Comment;
+use App\Http\Requests\CreatePostRequest;
+
+
 class PostsController extends Controller
 {
     public function __construct()
@@ -40,7 +43,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
       $post = new Post;
       $post->title = $request->title;
@@ -83,7 +86,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePostRequest $request, $id)
     {
       $post = Post::find($id);
       $post->title = $request->title;
