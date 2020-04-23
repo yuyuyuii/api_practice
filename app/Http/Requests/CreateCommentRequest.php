@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePostRequest extends FormRequest
+class CreateCommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,10 +12,8 @@ class CreatePostRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    { 
-      //trueにすることでformrequestが使用出来る。
-      // return false;
-      return true;
+    {
+        return true;
     }
 
     /**
@@ -26,16 +24,13 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-          'title' => ['required', 'string', 'max:100'],
-          'content' => ['required', 'string'],
+          'comment' => ['required', 'string']
         ];
     }
 
-    public function messages()
-    {
+    public function messages(){
       return [
-        'title.required' => 'titleを入力してください',
-        'content.required'  => 'contentを入力してください',
+        'comment.required' => 'コメントを入力してください'
       ];
     }
 }

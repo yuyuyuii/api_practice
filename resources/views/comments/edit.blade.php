@@ -6,6 +6,9 @@
 <div>
   <form action="/comments/{{$comment->id}}" method="post">
   {{csrf_field()}}
+  @if($errors->has('comment'))
+    <p class="error" style="color:red;">{{$errors->first('comment')}}</p>
+  @endif
     <label for="comment">コメント</label>
     <textarea name="comment" id="comment" cols="30" rows="10">{{$comment->comment}}</textarea>
     <input type="hidden" name="_method" value="put">
