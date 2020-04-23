@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
-use App\User;
 use App\Comment;
-class PostsController extends Controller
+use App\User;
+class CommentsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }  
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-      $posts = Post::has("user")->get();
-      return view('posts.index', ['posts' => $posts]);
+        //
     }
 
     /**
@@ -30,7 +24,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-      return view('posts.create');
+        //
     }
 
     /**
@@ -41,11 +35,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-      $post = new Post;
-      $post->title = $request->title;
-      $post->content = $request->content;
-      $post->user_id = $request->user()->id;
-      $post->save();
+      $comment = new Comment;
+      $comment->user_id = $request->user()->id;
+      $comment->post_id = $request->post_id;
+      $comment->comment = $request->comment;
+      $comment->save();
       return redirect('/posts');
     }
 
@@ -57,10 +51,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-      $post = Post::find($id);
-      $comments = Comment::has('post')->get();
-      // return view("posts.show", ["post" => $post]);
-      return view("posts.show", compact('post','comments'));
+        //
     }
 
     /**
@@ -71,8 +62,7 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-      $post = Post::find($id);
-      return view('posts.edit', ['post' =>$post]);
+        //
     }
 
     /**
@@ -84,11 +74,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $post = Post::find($id);
-      $post->title = $request->title;
-      $post->content = $request->content;
-      $post->save();
-      return redirect('posts/'.$id);
+        //
     }
 
     /**
@@ -99,8 +85,6 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-      $post = Post::find($id);
-      $post->delete();
-      return redirect("posts");
+        //
     }
 }

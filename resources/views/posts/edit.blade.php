@@ -1,4 +1,4 @@
-@extends('layouts.application')
+@extends('layouts.app')
 
 @section('title', 'ポスト編集')
 
