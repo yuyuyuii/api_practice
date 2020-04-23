@@ -25,9 +25,15 @@
   @foreach ($comments as $comment)
     @if($post->id === $comment->post_id)
     <div>
-      <p>{{$comment->user_id}}</p>
-      <p>{{$comment->post_id}}</p>
       <p>{{$comment->comment}}</p>
+      @if(Auth::user()->id === $comment->user_id)
+      <a href="/comments/{{$comment->id}}">修正</a>
+      <form action="/comments/{{$comment->id}}" method="post">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="削除">
+      </form>
+      @endif
       <hr>
     </div>
     @endif
