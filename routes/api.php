@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware' => ['api']], function(){
+  //exceptで不要なルーティングを除外する
+  Route::resource('posts', 'Api\PostsController', ['except' => ['create', 'edit']]);
+});
