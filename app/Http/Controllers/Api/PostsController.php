@@ -39,7 +39,9 @@ class PostsController extends Controller
       $post->content = $request->content;
       // $post->user_id = $request->user()->id;
       $post->save();
-      return redirect('api/posts');
+      $msg = '登録ok';
+      // return redirect('api/posts');
+      return $msg;
     }
 
     /**
